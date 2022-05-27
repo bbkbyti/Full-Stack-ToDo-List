@@ -1,5 +1,5 @@
 class WeekdaysController < ApplicationController
-  before_action :set_weekday, only: [:show, :update, :destroy]
+  before_action :set_weekday, only: :destroy
 
   # GET /weekdays
   def index
@@ -10,32 +10,13 @@ class WeekdaysController < ApplicationController
 
   # GET /weekdays/1
   def show
-    render json: @weekday
+    render json: @weekday, include: :todos
   end
 
-  # POST /weekdays
-  def create
-    @weekday = Weekday.new(weekday_params)
 
-    if @weekday.save
-      render json: @weekday, status: :created, location: @weekday
-    else
-      render json: @weekday.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /weekdays/1
-  def update
-    if @weekday.update(weekday_params)
-      render json: @weekday
-    else
-      render json: @weekday.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /weekdays/1
-  def destroy
-    @weekday.destroy
+  def add_to_weekday
+    @todo = Todo.find(params[:todo_id])
+    @todo.weekdays << @weekday
   end
 
   private
@@ -45,7 +26,5 @@ class WeekdaysController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def weekday_params
-      params.require(:weekday).permit(:day)
-    end
+
 end
