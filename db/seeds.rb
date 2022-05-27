@@ -9,16 +9,20 @@
 Weekday.destroy_all
 Todo.destroy_all
 
-Todo.create!(title: 'Buy grocery')
-Todo.create!(title: 'Go to school')
-Todo.create!(title: 'Pay rent')
-Todo.create!(title: 'Buy gas')
-Todo.create!(title: 'Study Math for two hours')
-Todo.create!(title: 'Call mom')
-Todo.create!(title: 'Practice guitar for one hour')
-Todo.create!(title: 'Solve algorithms for one hour')
-Todo.create!(title: 'Practice JavaScript for two hours')
-Todo.create!(title: 'Go to soccer game in the afternoon')
+@admin = User.create!(username: 'jassem', email: 'jasem@email3.com', password: '123456')
+
+puts "#{User.count} users created!"
+
+Todo.create!(title: 'Buy grocery', user: @admin)
+Todo.create!(title: 'Go to school', user: @admin)
+Todo.create!(title: 'Pay rent', user: @admin)
+Todo.create!(title: 'Buy gas', user: @admin)
+Todo.create!(title: 'Study Math for two hours', user: @admin)
+Todo.create!(title: 'Call mom', user: @admin)
+Todo.create!(title: 'Practice guitar for one hour', user: @admin)
+Todo.create!(title: 'Solve algorithms for one hour', user: @admin)
+Todo.create!(title: 'Practice JavaScript for two hours', user: @admin)
+Todo.create!(title: 'Go to soccer game in the afternoon', user: @admin)
 
 puts "#{Todo.count} todos created!"
 
