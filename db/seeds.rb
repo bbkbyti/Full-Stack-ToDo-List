@@ -9,7 +9,7 @@
 Weekday.destroy_all
 Todo.destroy_all
 
-@admin = User.create!(username: 'jassem', email: 'jasem@email3.com', password: '123456')
+@admin = User.create!(username: 'jassem2', email: 'jasem@email4.com', password: '123456')
 
 puts "#{User.count} users created!"
 
